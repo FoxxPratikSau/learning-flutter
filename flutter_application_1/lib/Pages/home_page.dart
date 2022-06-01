@@ -11,7 +11,11 @@ class Homepage extends StatelessWidget {
     int days =30;
     return Scaffold(
       appBar: AppBar(
-        title: Text("First App"),
+        // backgroundColor: Colors.white,
+        // elevation: 0.0,
+        //iconTheme: IconThemeData(color: Colors.deepPurple),
+        
+        title: Text("Catalog App"),
         centerTitle: true,
       ),
       body: Center(
