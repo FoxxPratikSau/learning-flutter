@@ -24,6 +24,7 @@ class Myapp extends StatelessWidget {
         ),
       darkTheme: ThemeData(brightness: Brightness.dark
       ),
+      debugShowCheckedModeBanner: false, //to remove debug banner
       initialRoute: "/login",
       routes: {
         "/":(context) => LoginPage(),

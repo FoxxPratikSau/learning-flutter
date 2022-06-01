@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/widgets/drawer.dart';
 
 
 class Homepage extends StatelessWidget {
@@ -18,7 +19,7 @@ class Homepage extends StatelessWidget {
            child: Text("hello $days world"),
         ),
       ),
-     drawer: Drawer(),
+     drawer: MyDrawer(),
     );
   }
 }
