@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/catalog.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
+import 'package:flutter_application_1/widgets/item_widget.dart';
 
 
 class Homepage extends StatelessWidget {
@@ -9,6 +11,7 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int days =30;
+    final dummylist = List.generate(20,(index)=>CatalogModel.items[0]); //CatalogModel is class in catalog.dart under models folder
     return Scaffold(
       appBar: AppBar(
         // backgroundColor: Colors.white,
@@ -18,9 +21,15 @@ class Homepage extends StatelessWidget {
         title: Text("Catalog App"),
         centerTitle: true,
       ),
-      body: Center(
-        child: Container(
-           child: Text("hello $days world"),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView.builder(
+          itemCount: dummylist.length ,
+          itemBuilder: (context,index){
+            return ItemWidget(    //item widget is class made by me in item_widget.dart under wodgets folder
+              item: dummylist[index],
+            );
+          },
         ),
       ),
      drawer: MyDrawer(),
