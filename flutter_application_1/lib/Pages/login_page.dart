@@ -12,15 +12,16 @@ class LoginPage extends StatefulWidget  {
 }
 
 class _LoginPageState extends State<LoginPage> {
-//String name="";
+String name="";
 bool changeButton = false;
-final _formKey = GlobalKey<FormState>();
+final formKey = GlobalKey<FormState>();
+//final _formKey.currentState!.validate();
 moveToHome(BuildContext context)async{
-   // if (_formKey.currentState!.validate()){
+    if (formKey.currentState!.validate()){
       setState(() {
         changeButton = true;
       });
-      await Future.delayed(Duration(seconds: 1));
+      await Future.delayed(Duration(milliseconds: 10));
                           //async.....await
                           //to delay for animation to complete
       await Navigator.pushNamed(context, MyRoutes.homeRoute); 
@@ -29,7 +30,7 @@ moveToHome(BuildContext context)async{
       setState(() {
         changeButton=false;
       });
-   // }
+    }
  
 }
 
@@ -40,6 +41,7 @@ moveToHome(BuildContext context)async{
       color: Colors.white,
       child: SingleChildScrollView(
         child: Form(
+          key: formKey,
           child: Column(
             children: [
               Image.asset("assets/images/undraw_heavy_box_agqi.png",
@@ -63,13 +65,15 @@ moveToHome(BuildContext context)async{
                   TextFormField(
                     decoration: InputDecoration(
                       hintText: "Enter Email id",
-                      labelText: "email",
+                      labelText: "Email",
                     ),
-                    //  validator: (email) {
-                    //   if (isEmailValid(email)) return null;
-                    //   else
-                    //     return 'Enter a valid email address';
-                    // },
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter email id';
+                      }
+                        return null;
+                      
+                    },
                     onChanged: (value){
                       //name = value;
                       setState(() {
@@ -85,12 +89,14 @@ moveToHome(BuildContext context)async{
                       hintText: "Enter Password",
                       labelText: "Password",
                     ),
-                    maxLength: 6,
-                    // validator: (password) {
-                    //     if (isPasswordValid(password)) return null;
-                    //     else
-                    //       return 'Enter a valid password';
-                    //   },
+                    //maxLength: 6,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter password';
+                      }
+                        return null;
+                      
+                    },
                   ),
                   SizedBox(
                     height: 40.0,
@@ -104,7 +110,7 @@ moveToHome(BuildContext context)async{
                     child: InkWell(
                       onTap: ()=>moveToHome(context),
                       child: AnimatedContainer(
-                        duration: Duration(seconds: 1 ),
+                        duration: Duration(milliseconds: 10 ),
                         width: changeButton ? 50:150,
                         height: 50,
                         alignment:Alignment.center ,
@@ -137,7 +143,10 @@ moveToHome(BuildContext context)async{
                   
                 //   style: TextButton.styleFrom(minimumSize: Size(140, 40)),
                 //   onPressed: (){
+                //     final isValidForm= formKey.currentState!.validate();
+                //    if (isValidForm) {
                 //       Navigator.pushNamed(context, MyRoutes.homeRoute);
+                //     }  
                 //   },
                 //   ),
                 ],),
