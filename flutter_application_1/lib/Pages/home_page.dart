@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:flutter_application_1/models/catalog.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
-import 'package:flutter_application_1/widgets/item_widget.dart';
+//import 'package:flutter_application_1/widgets/item_widget.dart';
 
 
 class Homepage extends StatefulWidget {
@@ -50,14 +50,58 @@ class _HomepageState extends State<Homepage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
-        ? ListView.builder(
-          itemCount: CatalogModel.items.length ,
-          itemBuilder: (context,index) => ItemWidget(    //item widget is class made by me in item_widget.dart under wodgets folder
-              item: CatalogModel.items[index],
-            ),
+        child: (CatalogModel.items != null )
+        ? 
+//FOR LIST VIEW
+
+        // ListView.builder(
+        //   itemCount: CatalogModel.items?.length ,
+        //   itemBuilder: (context,index) => ItemWidget(    //item widget is class made by me in item_widget.dart under wodgets folder
+        //       item: CatalogModel.items![index],
+        //     ),
           
-        )
+        // )
+
+
+//FOR GRID VIEW
+        GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 16,
+            crossAxisSpacing: 16,
+            ), 
+          itemBuilder: (context,index){
+            final item= CatalogModel.items![index];
+            return Card(
+              clipBehavior: Clip.antiAlias,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15)),
+              child: GridTile(
+                header: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple,
+                  ),
+                  padding: EdgeInsets.all(12),
+                  child: Text(item.name, style: TextStyle(color: Colors.white),)
+                ),
+                child: Image.network(
+                  item.image,
+                  ),
+                footer: Container(
+                  child: Text(
+                    item.price.toString(),
+                    style: TextStyle(color: Colors.white),
+                    ),
+                    padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                    ),
+                ),
+              )
+            );
+          },
+          itemCount: CatalogModel.items?.length ,
+          )
         :Center(
           child:CircularProgressIndicator(),
         )
