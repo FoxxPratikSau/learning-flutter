@@ -2,9 +2,11 @@
 // ignore_for_file: prefer_const_constructors
 import 'dart:convert';
 //import 'dart:html';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/models/catalog.dart';
+import 'package:flutter_application_1/utils/routes.dart';
 import 'package:flutter_application_1/widgets/themes.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -51,6 +53,11 @@ class _HomepageState extends State<Homepage> {
     //final dummylist = List.generate(20,(index)=>CatalogModel.items[0]); //CatalogModel is class in catalog.dart under models folder
     return Scaffold(
       backgroundColor: MyTheme.creamColor,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: MyTheme.DarkBluishCOlor,
+        onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+        child: Icon(CupertinoIcons.cart),
+      ),
       body: SafeArea(
         child: Container(
           padding: Vx.m32,
