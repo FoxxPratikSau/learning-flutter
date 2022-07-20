@@ -19,7 +19,7 @@ class CatalogList extends StatelessWidget {
       itemCount: CatalogModel.items?.length ,
       itemBuilder: (context,index){
         final catalog= CatalogModel.items![index];
-        return InkWell(
+        return InkWell( //LINKING DETAIL PAGE FROM HOME
           onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeDetailPage(
             catalog: catalog
             )
@@ -73,7 +73,7 @@ class CatalogItem extends StatelessWidget {
                         StadiumBorder(), 
                       )
                     ),
-                    child: "Buy".text.make()
+                    child: "Add to Cart".text.make()
                   )
                 ],
               ).pOnly(right: 8.0),

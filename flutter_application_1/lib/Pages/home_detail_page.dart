@@ -15,9 +15,11 @@ class HomeDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar( //AppBAR for back button
+        backgroundColor: Colors.transparent,
+      ),
       backgroundColor: MyTheme.creamColor,
-      bottomNavigationBar: Container(
+      bottomNavigationBar: Container( //to add price and buy button
         color: Colors.white,
         child: ButtonBar(
                   alignment: MainAxisAlignment.spaceBetween, //to get max dist between two horizontal thing
@@ -36,8 +38,8 @@ class HomeDetailPage extends StatelessWidget {
                           StadiumBorder(), 
                         )
                       ),
-                      child: "Buy".text.make()
-                    ).wh(100,50)
+                      child: "Add to Cart".text.make()
+                    ).wh(120,50)
                   ],
                 ).p32(),
       ),
@@ -61,6 +63,11 @@ class HomeDetailPage extends StatelessWidget {
                     catalog.name.text.xl4.bold.color(MyTheme.DarkBluishCOlor).make(),
                     catalog.desc.text.textStyle(context.captionStyle).xl.make(),
                     10.heightBox,
+                    "Gave fast songs upon my then entreating wind of sat. Gently craven soul soul reply sad a one the prophet, sorrow whom my surely raven my fiery. Bust mien truly in thrilled grim wrought. Thee undaunted the with plutonian little sorrowsorrow oer from metell, i both above of tempest me."
+                    .text
+                    .textStyle(context.captionStyle)
+                    .make()
+                    .p20(),
                   ]).py64(),
               ),
             ))
