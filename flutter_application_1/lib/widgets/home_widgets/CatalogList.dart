@@ -18,10 +18,13 @@ class CatalogList extends StatelessWidget {
       shrinkWrap: true, //to stop listview take full screen
       itemCount: CatalogModel.items?.length ,
       itemBuilder: (context,index){
-        final catalog= CatalogModel.items![index];
+        // final catalog= CatalogModel.items![index];
+        final catalog= CatalogModel.getByPosition(index);
         return InkWell( //LINKING DETAIL PAGE FROM HOME
-          onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeDetailPage(
-            catalog: catalog
+          onTap: ()=>Navigator.push(
+            context, MaterialPageRoute(builder: (context)=>HomeDetailPage(
+              catalog: catalog
+              //catalog: CatalogModel.getbyId(2), //to always open a specific detail page
             )
           )
         ), //pushed name can not be done, need argument so push is used
