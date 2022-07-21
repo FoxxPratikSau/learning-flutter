@@ -52,14 +52,20 @@ class _HomepageState extends State<Homepage> {
     
     //final dummylist = List.generate(20,(index)=>CatalogModel.items[0]); //CatalogModel is class in catalog.dart under models folder
     return Scaffold(
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.cardColor, //theme of will be used for it without vx
       floatingActionButton: FloatingActionButton(
-        backgroundColor: MyTheme.DarkBluishCOlor,
+        // backgroundColor: MyTheme.DarkBluishCOlor,
+        // ignore: deprecated_member_use
+        backgroundColor: context.theme.buttonColor, 
         onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
-        child: Icon(CupertinoIcons.cart),
+        child: Icon(
+          CupertinoIcons.cart,
+          color: Colors.white,
+        ),
       ),
       body: SafeArea(
         child: Container(
+          color: context.canvasColor,
           padding: Vx.m32,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start, // to make the text from left

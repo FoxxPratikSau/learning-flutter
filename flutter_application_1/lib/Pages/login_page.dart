@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/routes.dart';
+import 'package:velocity_x/velocity_x.dart';
 // ctrl+space to see properties
 
 class LoginPage extends StatefulWidget  {
@@ -38,7 +39,7 @@ moveToHome(BuildContext context)async{
   Widget build(BuildContext context) {
     return Material(  
       
-      color: Colors.white,
+      color: context.canvasColor,
       child: SingleChildScrollView(
         child: Form(
           key: formKey,
@@ -104,7 +105,8 @@ moveToHome(BuildContext context)async{
 
                   //BUtton
                   Material( //gave ancestor of material, while giving ancestor avoid giving decoration side child
-                    color: Colors.deepPurple,
+                    // ignore: deprecated_member_use
+                    color: context.theme.buttonColor,
                           //shape: changeButton ? BoxShape.circle : BoxShape.rectangle,
                           borderRadius: BorderRadius.circular(changeButton?50:8), //to get ripple effect in material
                     child: InkWell(

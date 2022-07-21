@@ -15,7 +15,7 @@ class CatalogImage extends StatelessWidget {
     return  Image.network(
             //catalog.image
             image,
-          ).box.color(MyTheme.creamColor).make().p16().w32(context);
+          ).box.p8.rounded.color(context.canvasColor).make().p8().w32(context);
           //w is width, p is padding
   }
 }
