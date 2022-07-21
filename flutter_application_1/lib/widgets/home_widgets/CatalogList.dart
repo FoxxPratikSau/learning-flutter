@@ -1,4 +1,6 @@
 
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Pages/home_detail_page.dart';
 import 'package:flutter_application_1/Pages/home_page.dart';
@@ -19,7 +21,7 @@ class CatalogList extends StatelessWidget {
       itemCount: CatalogModel.items?.length ,
       itemBuilder: (context,index){
         // final catalog= CatalogModel.items![index];
-        final catalog= CatalogModel.getByPosition(index);
+        final catalog= CatalogModel.items![index];
         return InkWell( //LINKING DETAIL PAGE FROM HOME
           onTap: ()=>Navigator.push(
             context, MaterialPageRoute(builder: (context)=>HomeDetailPage(
@@ -78,7 +80,7 @@ class CatalogItem extends StatelessWidget {
                         StadiumBorder(), 
                       )
                     ),
-                    child: "Add to Cart".text.make()
+                    child: "Add to Cart".text.white.make()
                   )
                 ],
               ).pOnly(right: 8.0),
