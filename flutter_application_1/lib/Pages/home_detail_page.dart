@@ -18,20 +18,21 @@ class HomeDetailPage extends StatelessWidget {
       appBar: AppBar( //AppBAR for back button
         backgroundColor: Colors.transparent,
       ),
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container( //to add price and buy button
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
                   alignment: MainAxisAlignment.spaceBetween, //to get max dist between two horizontal thing
                   //buttonPadding: Vx.mOnly(right: 16),
                   buttonPadding: EdgeInsets.zero,
                   children: [
-                    "\$${catalog.price}".text.bold.xl4.red800.make(),
+                    "\$${catalog.price}".text.bold.xl4.color(context.accentColor).make(),
                     ElevatedButton(
                       onPressed: () {}, 
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                          MyTheme.DarkBluishCOlor,
+                          // ignore: deprecated_member_use
+                          context.theme.buttonColor,
                         ),
 
                         shape: MaterialStateProperty.all(
@@ -56,19 +57,21 @@ class HomeDetailPage extends StatelessWidget {
               arcType: VxArcType.CONVEY,
               edge: VxEdge.TOP,
               child: Container(
-                color: Colors.white,
+                color: context.cardColor,
                 width: context.screenWidth,
-                child: Column(
-                  children: [
-                    catalog.name.text.xl4.bold.color(MyTheme.DarkBluishCOlor).make(),
-                    catalog.desc.text.textStyle(context.captionStyle).xl.make(),
-                    10.heightBox,
-                    "Gave fast songs upon my then entreating wind of sat. Gently craven soul soul reply sad a one the prophet, sorrow whom my surely raven my fiery. Bust mien truly in thrilled grim wrought. Thee undaunted the with plutonian little sorrowsorrow oer from metell, i both above of tempest me."
-                    .text
-                    .textStyle(context.captionStyle)
-                    .make()
-                    .p20(),
-                  ]).py64(),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      catalog.name.text.xl4.bold.color(context.accentColor).make(),
+                      catalog.desc.text.textStyle(context.captionStyle).xl.make(),
+                      10.heightBox,
+                      "Gave fast songs upon my then entreating wind of sat. Gently craven soul soul reply sad a one the prophet, sorrow whom my surely raven my fiery. Bust mien truly in thrilled grim wrought. Thee undaunted the with plutonian little sorrowsorrow oer from metell, i both above of tempest me."
+                      .text
+                      .textStyle(context.captionStyle)
+                      .make()
+                      .p20(),
+                    ]).py64(),
+                ),
               ),
             ))
         ]
